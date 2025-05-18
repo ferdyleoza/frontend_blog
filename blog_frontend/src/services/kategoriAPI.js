@@ -27,16 +27,17 @@ export const updateKategori = async (id, data) => {
     const response = await axios.put(`${API_URL}/${id}`, data);
     return response.data.data;
   } catch (error) {
-    console.error('Gagal mengupdate kategori:', error);
+    console.error('Gagal mengupdate kategori:', error.response?.data || error);
     throw error;
   }
 };
 
 export const deleteKategori = async (id) => {
   try {
-    await axios.delete(`${API_URL}/${id}`);
+    const response = await axios.delete(`${API_URL}/${id}`);
+    return response.data; // optional
   } catch (error) {
-    console.error('Gagal menghapus kategori:', error);
+    console.error('Gagal menghapus kategori:', error.response?.data || error);
     throw error;
   }
 };

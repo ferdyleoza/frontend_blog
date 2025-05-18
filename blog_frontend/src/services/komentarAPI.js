@@ -14,9 +14,10 @@ export const getAllKomentar = async () => {
   }
 };
 
-export const createKomentar = async (penulis) => {
+// Benar
+export const createKomentar = async (komentar) => {
   try {
-    const response = await axios.post(API_URL, Komentar);
+    const response = await axios.post(API_URL, komentar); // ✅ Kirim objek komentar
     return response.data.data;
   } catch (error) {
     console.error('Gagal menambahkan komentar:', error);
@@ -24,15 +25,16 @@ export const createKomentar = async (penulis) => {
   }
 };
 
-export const updateKomentar = async (id, penulis) => {
+export const updateKomentar = async (id, komentar) => {
   try {
-    const response = await axios.put(`${API_URL}/${id}`, Komentar);
+    const response = await axios.put(`${API_URL}/${id}`, komentar); // ✅ Sama juga
     return response.data.data;
   } catch (error) {
     console.error('Gagal mengupdate komentar:', error);
     throw error;
   }
 };
+
 
 export const deleteKomentar = async (id) => {
   try {
